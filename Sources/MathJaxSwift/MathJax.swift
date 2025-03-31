@@ -224,7 +224,8 @@ extension MathJax {
     guard let exception = context.exception else {
       return
     }
-    
+    // Reset the exception so it does not pollute all subsequent calls
+    context.exception = nil
     // Throw its string value.
     throw MathJaxError.javascriptException(value: exception.toString())
   }
